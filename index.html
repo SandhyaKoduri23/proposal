@@ -50,16 +50,12 @@ button:hover{
   margin-top:15px;
   font-weight:bold;
 }
-
-.hidden{
-  display:none;
-}
 </style>
 
 </head>
 <body>
 
-<div class="container">
+<div class="container" id="container">
 
 <h2>Treasure Hunt 💖</h2>
 <p>Answer these questions</p>
@@ -95,11 +91,11 @@ a: ["grand nagarjuna","nagarjuna"]
 
 {
 q: "Who loves more? 😜",
-a: ["me","sandhya","you"]
+a: ["me","sandhya","you","both","we both","both of us","harish"]
 },
 
 {
-q: "Final question — Who is your forever partner?",
+q: "Who is your forever partner?",
 a: ["sandhya","you"]
 }
 ];
@@ -124,10 +120,7 @@ if(current < questions.length){
 loadQuestion();
 }
 else{
-document.querySelector(".container").innerHTML = `
-<h2>Surprise ❤️</h2>
-<h1>Harishuuu... Will you marry me? 💍</h1>
-`;
+showCongrats();
 }
 
 }
@@ -135,6 +128,22 @@ else{
 document.getElementById("msg").innerHTML = "Try again ❤️";
 }
 
+}
+
+function showCongrats(){
+document.getElementById("container").innerHTML = `
+<h2>Congratulations 🎉😛</h2>
+<p>You cleared the hunt ❤️</p>
+<p>Here is the final surprise...</p>
+<br>
+<button onclick="showFinal()">Open Surprise</button>
+`;
+}
+
+function showFinal(){
+document.getElementById("container").innerHTML = `
+<h1>I love you harishuuu ❤️</h1>
+`;
 }
 
 loadQuestion();
