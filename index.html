@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Treasure Hunt ❤️</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:#ffe6f0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
+}
+
+.container{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  width:350px;
+  text-align:center;
+  box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+input{
+  width:90%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+button{
+  margin-top:10px;
+  padding:10px 20px;
+  border:none;
+  background:#ff0066;
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#ff3385;
+}
+
+.message{
+  margin-top:15px;
+  font-weight:bold;
+}
+
+.hidden{
+  display:none;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>Treasure Hunt 💖</h2>
+<p>Answer these questions</p>
+
+<div id="question"></div>
+
+<input type="text" id="answer" placeholder="Type your answer" />
+
+<br>
+<button onclick="checkAnswer()">Submit</button>
+
+<div class="message" id="msg"></div>
+
+</div>
+
+<script>
+
+const questions = [
+{
+q: "Where did we first meet?",
+a: ["ciet","chalapathi college","college","guntur","lam","class room","class"]
+},
+
+{
+q: "First movie we saw together?",
+a: ["ninnu kori"]
+},
+
+{
+q: "First restaurant we went together?",
+a: ["grand nagarjuna","nagarjuna"]
+},
+
+{
+q: "Who loves more? 😜",
+a: ["me","sandhya","you"]
+},
+
+{
+q: "Final question — Who is your forever partner?",
+a: ["sandhya","you"]
+}
+];
+
+let current = 0;
+
+function loadQuestion(){
+document.getElementById("question").innerHTML = questions[current].q;
+document.getElementById("answer").value="";
+document.getElementById("msg").innerHTML="";
+}
+
+function checkAnswer(){
+
+let userAnswer = document.getElementById("answer").value.toLowerCase().trim();
+
+if(questions[current].a.includes(userAnswer)){
+
+current++;
+
+if(current < questions.length){
+loadQuestion();
+}
+else{
+document.querySelector(".container").innerHTML = `
+<h2>Surprise ❤️</h2>
+<h1>Harishuuu... Will you marry me? 💍</h1>
+`;
+}
+
+}
+else{
+document.getElementById("msg").innerHTML = "Try again ❤️";
+}
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
